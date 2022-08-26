@@ -14,6 +14,12 @@ server.post("/sign-up", (req, res) => {
     res.send("OK");
 });
 
+server.post("/tweets", (req, res) => {
+    const newTweet = req.body;
+    tweets.push(newTweet);
+    res.send("OK");
+});
+
 server.get("/tweets", (req, res) => {
     const visibleTweets = getVisibleTweets();
 
@@ -22,6 +28,8 @@ server.get("/tweets", (req, res) => {
 
 
 server.listen(5000);
+
+
 
 function getAvatar(username) {
     const user = users.find(value => value.username === username);
